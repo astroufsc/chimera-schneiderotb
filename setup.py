@@ -1,13 +1,14 @@
 from distutils.core import setup
 
 setup(
-    name='chimera_template',
+    name='chimera_schneiderotb',
     version='0.0.1',
-    packages=['chimera_template', 'chimera_template.instruments', 'chimera_template.controllers'],
+    packages=['chimera_schneiderotb', 'chimera_schneiderotb.instruments'],
     scripts=[],
-    url='http://github.com/astroufsc/chimera-template',
+    install_requires=['pymodbus', 'chimera-python'],
+    url='http://github.com/astroufsc/chimera-schneiderotb',
     license='GPL v2',
     author='William Schoenell',
     author_email='william@iaa.es',
-    description='Template for chimera plugins'
+    description='Chimera instrument plugin for Schneider Electric Advantys OTB Ethernet network I/O module'
 )

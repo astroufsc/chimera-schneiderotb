@@ -1,56 +1,62 @@
-chimera-template plugin
-=======================
+chimera-schneiderotb plugin
+===========================
 
-This is a template plugin for the chimera observatory control system
-https://github.com/astroufsc/chimera.
-
-Usage
------
-
-Rename chimera_template for your plugin name. It is important that the plugin
-name must start with chimera\_ to be found by chimera. Instruments and
-controllers must follow the standard ``chimera_(plugin_name)/(instruments|controllers)/(plugin).py``
-
-The class inside ``(plugin).py`` should be named Plugin (with CamelCase letters).
-
-For more info: https://github.com/astroufsc/chimera/blob/master/docs/site/chimerafordevs.rst#chimera-objects
+This plugin makes a Schneider Electric Advantys OTB Ethernet network I/O module a chimera switch to, for example,
+switch lamps and fans.
 
 
 Installation
 ------------
 
-Installation instructions. Dependencies, etc...
+This plugin depends on `pymodbus`_ to connect to the controller.
 
 ::
 
-   pip install -U chimera_template
-
-or
-
-::
-
-    pip install -U git+https://github.com/astroufsc/chimera-template.git
+    pip install -U git+https://github.com/astroufsc/chimera-schneiderotb.git
 
 
 Configuration Example
 ---------------------
 
-Here goes an example of the configuration to be added on ``chimera.config`` file.
+Examples of the configuration to be added on ``chimera.config`` file:
 
 ::
 
-    instrument:
-        name: model
-        type: Example
+    switches:
+
+        - name: dome_lamp
+          type: SchneiderOTBSwitch
+          device: 192.168.0.10
+          output: 5
+
+        - name: m1_fan
+          type: SchneiderOTBSwitch
+          device: 192.168.0.10
+          output: 6
+
+or
+
+::
+
+    lamps:
+
+        - name: dome_lamp
+          type: SchneiderOTBSwitch
+          device: 192.168.0.10
+          output: 5
+
+    fans:
+
+        - name: m1_fan
+          type: SchneiderOTBSwitch
+          device: 192.168.0.10
+          output: 6
 
 
-Tested Hardware (for instruments)
----------------------------------
+Tested Hardware
+---------------
 
-This plugin was tested on these hardware:
-
-* Hardware example 1, model 2
-* Hardware example 2, model 3
+This plugin was tested on Schneider Electric Advantys OTB model OTB1E0DM9LP.
 
 
 Contact
@@ -60,4 +66,6 @@ For more information, contact us on chimera's discussion list:
 https://groups.google.com/forum/#!forum/chimera-discuss
 
 Bug reports and patches are welcome and can be sent over our GitHub page:
-https://github.com/astroufsc/chimera-template/
+https://github.com/astroufsc/chimera-schneiderotb/
+
+.. _pymodbus: https://pypi.python.org/pypi/pymodbus
