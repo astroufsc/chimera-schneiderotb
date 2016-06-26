@@ -5,7 +5,7 @@ from chimera.interfaces.switch import Switch
 from pymodbus.client.sync import ModbusTcpClient
 
 
-class SchneiderOTBSwitch(ChimeraObject, Lamp, Fan, Switch):
+class SchneiderOTBSwitch(ChimeraObject, Switch):
     __config__ = {"device": None,
                   "output": 6,  # Which output to switch on/off
                   "switch_timeout": None,  # Maximum number of seconds to wait for state change
